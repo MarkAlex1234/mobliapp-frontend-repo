@@ -1,4 +1,3 @@
-import { react } from "react-dom";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import '../styles/style.css';
 import mapPicture from '../images/Googlemap.PNG';
