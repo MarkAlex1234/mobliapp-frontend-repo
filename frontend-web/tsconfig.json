@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-, "test.tsx"  ]
+, "test.tsx", "webpack.config.ts"  ]
 }
