@@ -36,3 +36,61 @@
     transform: rotate(360deg);
   }
 }
+
+.switch{
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  border-radius: 36px;
+
+  background-color: #282c34;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider{
+  position: absolute;
+  cursor: pointer;
+  border-radius: 36px;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: grey;
+  transition: 0.5s;
+}
+
+.slider::before{
+  position: absolute;
+  content: "";
+  border-radius: 36px;
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color:white;
+  transition: 0.5s;
+}
+
+input:checked + .slider{
+  background-color:chartreuse;
+}
+
+input:checked + .slider:before{
+  transform: translateX(26px);
+}
+
+.slider:rounded {
+  border-radius: 34px;
+}
+
+.slider.rounded:before{
+  border-radius: 50%;
+}

@@ -11,6 +11,11 @@ color="white"/>}>
     <li>meow</li>
     <li>meow</li>
     </ul>
+
+    <label className="switch">
+        <input type="checkbox"/>
+        <span className="slider"/>
+    </label>
    
 
 </Menu>
