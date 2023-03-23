@@ -1,6 +1,6 @@
 import {DirectionsService,DirectionsRenderer, GoogleMap ,Marker,useLoadScript, LoadScript, Circle, InfoWindow, MarkerF, InfoWindowF} from '@react-google-maps/api';
-import FaBusAlt from 'react-icons';
 import { useState,useRef, useCallback } from 'react';
+import {FaBusAlt} from 'react-icons/fa';
 import {customIcons} from '../images/Images'
 import { display } from '@mui/system';
 import { json } from 'stream/consumers';
@@ -21,11 +21,11 @@ type mapPos ={
 }
 
 const allBusDatas:mapPos[] =[
-  {lat: -36.8585, lng:174.7644},
- {lat: -36.8586, lng:174.7645},
- {lat: -36.8587, lng:174.7646},
- {lat: -36.8588, lng:174.7647},
- {lat: -36.8589, lng:174.7648}
+  {lat: -36.8487838, lng:174.7605749},
+ {lat: -36.8488938, lng:174.7605849},
+ {lat: -36.8489038, lng:174.7605949},
+ {lat: -36.8490138, lng:174.7606049},
+ {lat: -36.8491238, lng:174.7606149}
 ]
 
 /**
@@ -41,10 +41,10 @@ const CreateBusObject:any = (positionData:mapPos, showBus:boolean):any =>{
   const handleBusClose= ():void =>{
     setIsBusWindow(false);
   }
-  return <>  <MarkerF visible={showBus} icon={CheckBusImageStatus(false,false)} position={positionData}
+  return <>  <MarkerF visible={showBus} icon={CheckBusImageStatus(true,false)} position={positionData}
   onClick={handleBusClick}/>
-  {isBusWindow && <InfoWindowF onLoad={()=>{console.log("refereshed")}}onCloseClick={handleBusClose} position={{lat: (positionData.lat + 0.0005), lng: positionData.lng}}>
-    <div>Example Data Set</div>
+  {isBusWindow && <InfoWindowF onLoad={()=>{console.log("refereshed")}}onCloseClick={handleBusClose} position={positionData}>
+    <div><FaBusAlt/><h5>Bus Number: CTY-202</h5><ul style={{listStyle: "none"}}><li>App ID: 0</li><li>App ID: 1</li><li>App ID: 2</li></ul></div>
     </InfoWindowF>}
     </>
 }
@@ -77,7 +77,7 @@ const Map = (displayText:boolean, displayIcons:boolean, displayBusIcons:boolean,
         "elementType": "labels.text",
         "stylers": [
           {
-            "visibility": `${displayText ? "on" : "off"}`
+            "visibility": `${displayText ? "off" : "on"}`
           }
         ]
       },
@@ -86,13 +86,37 @@ const Map = (displayText:boolean, displayIcons:boolean, displayBusIcons:boolean,
         "elementType": "labels.icon",
         "stylers": [
           {
-            "visibility": `${displayIcons ? "on" : "off"}`
+            "visibility": `${displayIcons ? "off" : "on"}`
+          }
+        ]
+      },
+      {
+        featureType: 'water',
+        elementType: 'geometry',
+        stylers: [
+          {
+            color: '#e9e9e9'
+          },
+          {
+            lightness: 17
+          }
+        ]
+      },
+      {
+        featureType: 'landscape',
+        elementType: 'geometry',
+        stylers: [
+          {
+            color: '#f5f5f5'
+          },
+          {
+            lightness: 20
           }
         ]
       }]
     }
     return <LoadScript googleMapsApiKey={APIKEY}><GoogleMap
-     zoom ={12} 
+     zoom ={17} 
      center={AUCKLAND} 
      mapContainerStyle={{width: "100%", height: "100vh"}}
      options={options}

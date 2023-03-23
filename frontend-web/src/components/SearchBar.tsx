@@ -25,20 +25,20 @@ const SearchBar = ():any =>{
 
   //data here
   const allBusDatas =[
-    {busNumber:"133", busLocation: [0.5,5],},
-    {busNumber:"101", busLocation: [0.2,6],},
-    {busNumber:"120", busLocation: [0.4,7],},
-    {busNumber:"423", busLocation: [0.4,7],},
-    {busNumber:"CB", busLocation: [0.4,7],},
-    {busNumber:"CB", busLocation: [0.4,7],},
-    {busNumber:"CB", busLocation: [0.4,7],},
-    {busNumber:"CB", busLocation: [0.4,7],},
-    {busNumber:"CB", busLocation: [0.4,7],},
-    {busNumber:"CB", busLocation: [0.4,7],},
-    {busNumber:"CB", busLocation: [0.4,7],},
-    {busNumber:"CB", busLocation: [0.4,7],},
-    {busNumber:"CB", busLocation: [0.4,7],},
-    {busNumber:"CB", busLocation: [0.4,7],},
+    {busNumber:"CTY-202", busLocation: [0.5,5],},
+    {busNumber:"CTY-404", busLocation: [0.2,6],},
+    {busNumber:"CTY-302", busLocation: [0.4,7],},
+    {busNumber:"CTY-304", busLocation: [0.4,7],},
+    {busNumber:"CTY-305", busLocation: [0.4,7],},
+    {busNumber:"CTY-306", busLocation: [0.4,7],},
+    {busNumber:"CTY-307", busLocation: [0.4,7],},
+    {busNumber:"CTY-308", busLocation: [0.4,7],},
+    {busNumber:"CTY-309", busLocation: [0.4,7],},
+    {busNumber:"CTY-300", busLocation: [0.4,7],},
+    {busNumber:"CTY-310", busLocation: [0.4,7],},
+    {busNumber:"CTY-311", busLocation: [0.4,7],},
+    {busNumber:"CTY-30", busLocation: [0.4,7],},
+    {busNumber:"CTY-30", busLocation: [0.4,7],},
   ]
 
 
@@ -88,7 +88,7 @@ const SearchBar = ():any =>{
         setOpen(false);
       }}
       isOptionEqualToValue={(option, value) => option.busNumber === value.busNumber}
-      getOptionLabel={(option) => (option.busNumber + " Log" + option.busLocation[0] + "Lat" + option.busLocation[1])}
+      getOptionLabel={(option) => (option.busNumber + " Seats:" + option.busLocation[0] + "Apps:" + option.busLocation[1])}
       options={options}
       loading={loading}
       renderInput={(params) => (

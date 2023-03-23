@@ -1,15 +1,15 @@
 import React from 'react';
 import {slide as Menu} from 'react-burger-menu';
 import  {GoGraph} from 'react-icons/go';
-import GrpahViewStyles from '../stylesheet/GrpahViewStyles';
+import GraphViewStyles from '../stylesheet/GraphViewStyles';
 const GraphView = () =>{
-    return <><Menu right styles={GrpahViewStyles} customBurgerIcon={<GoGraph
+    return <><Menu right styles={GraphViewStyles} customBurgerIcon={<GoGraph
 color="white"/>}>
     
     <ul>
-    <li>meow</li>
-    <li>meow</li>
-    <li>meow</li>
+    <li>Test</li>
+    <li>Test</li>
+    <li>Test</li>
     </ul>
    
 

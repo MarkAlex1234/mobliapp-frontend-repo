@@ -5,7 +5,7 @@ import { BsCheckSquare, BsFillCheckSquareFill } from 'react-icons/bs';
 import  {GiHamburgerMenu} from 'react-icons/gi';
 import SettingsBarStyles from '../stylesheet/SettingsBarStyles';
 import GoogleMapView from './GoogleMapView';
-const CustomToggleButton = (defaultCol:string, hovCol:string, setSelected:React.Dispatch<React.SetStateAction<boolean>>, selected:boolean) =>{
+export const CustomToggleButton = (defaultCol:string, hovCol:string, setSelected:React.Dispatch<React.SetStateAction<boolean>>, selected:boolean) =>{
 
     return <ToggleButton
     value="check"
@@ -34,18 +34,18 @@ const CustomToggleButton = (defaultCol:string, hovCol:string, setSelected:React.
 
 const SettingsBar = () => {
     //const [selected,setSelected] = useState(false);
-    const [icon, setIcon] = useState(false);
-    const [text, setText] = useState(false);
+    const [icon, setIcon] = useState(true);
+    const [text, setText] = useState(true);
     const [busIcons,setBusIcons] = useState(true);
     const [ui,setUI] = useState(true);
 return <><Menu styles={SettingsBarStyles} customBurgerIcon={<GiHamburgerMenu
 color="white"/>}>
     
     <ul style={{listStyleType: "none", fontSize: "14px",textAlign: "right"}}>
-    <li key={1}>Show All Label Icons {CustomToggleButton("white","grey",setIcon, icon)}</li>
-    <li key={2}>Show All Label Texts {CustomToggleButton("white","grey",setText, text)}</li>
+    <li key={1}>Hide All Label Icons {CustomToggleButton("white","grey",setIcon, icon)}</li>
+    <li key={2}>Hide All Label Texts {CustomToggleButton("white","grey",setText, text)}</li>
     <li key={3}>Show All Bus Icons {CustomToggleButton("white","grey", setBusIcons, busIcons)}</li>
-    <li key={4}>Show Default UI Tools {CustomToggleButton("white","grey", setUI, ui)}</li>
+    <li key={4}>Hide Default UI Tools {CustomToggleButton("white","grey", setUI, ui)}</li>
     </ul>
    
 
