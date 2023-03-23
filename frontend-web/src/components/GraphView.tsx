@@ -7,9 +7,10 @@ const GraphView = () =>{
     return <Menu right styles={GrpahViewStyles} customBurgerIcon={<GoGraph
 color="white"/>}>
     <ul>
-    <li>meow</li>
-    <li>meow</li>
-    <li>meow</li>
+    <li>Total Summary Report</li>
+    <li>Total Bus status</li>
+    <li>Total Moblie Detection Rates</li>
+    <li>Total Detection Attempts</li>
     </ul>
    
 
