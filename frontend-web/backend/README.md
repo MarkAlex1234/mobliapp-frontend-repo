@@ -34,6 +34,8 @@ $ npm install
 
 ## Running the app
 
+# NOTE YOU MUST CD INTO app/mobli-backend* 
+
 ```bash
 # development
 $ npm run start

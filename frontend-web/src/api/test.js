@@ -5,7 +5,7 @@ app.get("/", (req, res) => {
   res.send("Hello Node.js App");
 });
 
-const server = app.listen(process.env.PORT || 8080, () => {
+const server = app.listen(process.env.PORT || 5000, () => {
   const host = server.address().address;
   const port = server.address().port;
 
