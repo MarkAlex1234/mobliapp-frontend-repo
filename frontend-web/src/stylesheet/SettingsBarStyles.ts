@@ -1,3 +1,4 @@
+import { fontStyle } from '@mui/system';
 import React from 'react';
 
 const StyleButton =   {
@@ -22,23 +23,26 @@ const StyleButton =   {
     width: '24px'
   },
   bmCross: {
-    background: '#bdc3c7'
+    background: 'black'
   },
   bmMenuWrap: {
     position: 'fixed',
-    height: '100%'
+    height: '100%',
+
   },
   bmMenu: {
-    background: '#373a47',
+    background: 'white',
     padding: '2.5em 1.5em 0',
-    fontSize: '1.15em'
+    fontSize: '1.15em',
+    overflow:'hidden'
   },
   bmMorphShape: {
     fill: '#373a47'
   },
   bmItemList: {
-    color: '#b8b7ad',
-    padding: '0.8em'
+    color: 'black',
+    padding: '0.8em',
+   // listStyleType: 'none'
   },
   bmItem: {
     display: 'inline-block'

@@ -9,14 +9,13 @@ import ViewLayer from './components/ViewLayer';
 //bringing API KEYs
 //console.log(process.env.DB_HOST);
 function App() {
-  let isActive = true;
   return (
     <div className="App">
       <SearchBar/>
       <GraphView/>
       <ViewLayer/>
       <SettingsBar/>
-      <GoogleMapView/>
+   
     </div>
   );
 }
