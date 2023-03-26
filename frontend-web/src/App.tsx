@@ -6,17 +6,19 @@ import GraphView from './components/GraphView';
 import SearchBar from './components/SearchBar';
 import SettingsBar from './components/SettingsBar';
 import ViewLayer from './components/ViewLayer';
+import LoginPage from './components/LoginPage';
 //bringing API KEYs
 //console.log(process.env.DB_HOST);
 function App() {
   let isActive = true;
   return (
     <div className="App">
-      <SearchBar/>
+      {/* <SearchBar/>
       <GraphView/>
       <ViewLayer/>
       <SettingsBar/>
-      <GoogleMapView/>
+      <GoogleMapView/> */}
+      <LoginPage/>
     </div>
   );
 }
