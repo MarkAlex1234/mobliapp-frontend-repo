@@ -12,11 +12,11 @@ const AuthGoogle = (props:any) => {
                     requireDisplayName: false
                 }
             ],
-            signInSuccessUrl: '/authenticated',
+            signInSuccessUrl: '/adminportal',
             privacyPolicyUrl: '<your-url>',
         });},[props.auth])
   return (<>
-    <div>Mobli Admin Portal</div>
+    <div><h1>Mobli Admin Portal</h1></div>
     <div className={"firebase-auth-container"}></div>
     </>
   )

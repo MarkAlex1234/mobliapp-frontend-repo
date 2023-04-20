@@ -49,18 +49,18 @@ function App() {
   
   return (
     <div className="App">
-     
+      <div>
+        <button onClick={handleSignOut}>Sign Out</button>
+      </div>
         <Routes>
           {user.email ? (
-            <Route path="/authenticated" element={<Authenticated user={user} />} />
+            <Route path="/adminportal" element={<AdminPortal/>} />
           ) : (
             <Route path="/" element={<AuthGoogle auth={firebase.auth()} />}/>
           )} 
         </Routes>
       
-      <div>
-        <button onClick={handleSignOut}>Sign Out</button>
-      </div>
+     
     </div>
   );
 }

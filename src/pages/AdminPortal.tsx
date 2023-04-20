@@ -1,10 +1,17 @@
-import { GoogleMap } from "@react-google-maps/api";
+import GoogleMapView from "../components/googlemap/GoogleMapView";
+import GraphView from "../components/taskbar/GraphView";
+import SearchBar from "../components/taskbar/SearchBar";
+import SettingsBar from "../components/taskbar/SettingsBar";
+import ViewLayer from "../components/taskbar/ViewLayer";
 
 
 const AdminPortal = () => {
-    return ( 
-        <GoogleMap/>
-                
+    return ( <>
+        <SearchBar/>
+        <GraphView/>
+        <ViewLayer/>
+        <SettingsBar/>
+        </>
     );
 }
  
