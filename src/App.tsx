@@ -49,9 +49,9 @@ function App() {
   
   return (
     <div className="App">
-      <div>
+      {user.email ? (<div>
         <button onClick={handleSignOut}>Sign Out</button>
-      </div>
+      </div>) : (<div></div>)}
         <Routes>
           {user.email ? (
             <Route path="/adminportal" element={<AdminPortal/>} />
