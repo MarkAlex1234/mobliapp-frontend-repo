@@ -27,7 +27,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "concurrently \"react-scripts start\" \"cd backend && npm run start\"",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -59,7 +59,7 @@
     "os-browserify": "^0.3.0",
     "path-browserify": "^1.0.1",
     "ts-loader": "^9.4.2",
-    "typescript": "^5.0.2",
+    "typescript": "^3.2.1",
     "webpack": "^5.76.2",
     "webpack-cli": "^5.0.1"
   }
