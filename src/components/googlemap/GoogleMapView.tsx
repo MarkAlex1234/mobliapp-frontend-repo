@@ -1,10 +1,10 @@
 import {DirectionsService,DirectionsRenderer, GoogleMap ,Marker,useLoadScript, LoadScript, Circle, InfoWindow, MarkerF, InfoWindowF} from '@react-google-maps/api';
 import { useState,useRef, useCallback } from 'react';
 import {FaBusAlt} from 'react-icons/fa';
-import {customIcons} from '../images/Images'
+import {customIcons} from '../../assets/images/Images';
 import { display } from '@mui/system';
 import { json } from 'stream/consumers';
-import SettingsBar from './SettingsBar';
+
 
 
 const GoogleMapView = (text:boolean,icon:boolean, bus:boolean, ui:boolean) =>{
