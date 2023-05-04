@@ -3,9 +3,10 @@ import React,{useState} from 'react';
 import {slide as Menu} from 'react-burger-menu';
 import { BsCheckSquare, BsFillCheckSquareFill } from 'react-icons/bs';
 import  {GiHamburgerMenu} from 'react-icons/gi';
-import SettingsBarStyles from '../../assets/css/SettingsBarStyles';
+import SettingsBarStyles from '../../assets/stylesheet/SettingsBarStyles';
 import GoogleMapView from '../googlemap/GoogleMapView';
 export const CustomToggleButton = (defaultCol:string, hovCol:string, setSelected:React.Dispatch<React.SetStateAction<boolean>>, selected:boolean) =>{
+
     return <ToggleButton
     value="check"
     selected={selected}

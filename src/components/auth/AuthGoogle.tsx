@@ -2,7 +2,6 @@ import React,{useEffect} from 'react'
 import * as firebaseui from 'firebaseui';
 import firebase from 'firebase/compat/app';
 import 'firebaseui/dist/firebaseui.css';
-import getMarkerUnit from '../MarkerfUnit';
 import logo from '../../assets/images/mobli.jpg';
 const AuthGoogle = (props:any) => {
     useEffect(()=>{
@@ -21,7 +20,6 @@ const AuthGoogle = (props:any) => {
   return (<>
     <div><img src={logo} /></div>
     <div><h1>Mobli Admin Portal</h1></div>
-    <>{getMarkerUnit()}</>
     <div className={"firebase-auth-container"}></div>
     </>
   )

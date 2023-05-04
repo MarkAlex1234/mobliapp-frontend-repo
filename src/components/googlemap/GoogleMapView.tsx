@@ -1,7 +1,7 @@
 import { DirectionsService, DirectionsRenderer, GoogleMap, Marker, useLoadScript, LoadScript, Circle, InfoWindow, MarkerF, InfoWindowF, useGoogleMap } from '@react-google-maps/api';
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { FaBusAlt, FaUserAstronaut } from 'react-icons/fa';
-import { customIcons } from '../Icons'
+import { customIcons } from '../../assets/images/Images'
 
 //test Type
 import { arrayTestData, testData } from '../../services/test';
@@ -293,7 +293,7 @@ const Map = (displayText: boolean, displayIcons: boolean, displayBusIcons: boole
     {/* Animation Test */}
 {CreateBusObject(markerPosition,displayBusIcons)};
    <React.Fragment>
-  {(tempBusDataSets !== null) && tempBusDataSets.map((data:any)=> {return <MarkerF animation={google.maps.Animation.DROP} key={data.label_id} visible={displayBusIcons} icon={{url: customIcons.busOnline.icon, size:new google.maps.Size(35,35)}} position={{lat: data.lat, lng: data.lng}}
+  {(tempBusDataSets !== null) && tempBusDataSets.map((data:any)=> {return <MarkerF animation={google.maps.Animation.DROP} key={data.label_id} visible={displayBusIcons} icon={CheckBusImageStatus(true, false)} position={{lat: data.lat, lng: data.lng}}
     onClick={() =>{onSelect(data.label_id)}}>
     { (selected === data.label_id) ?  <InfoWindowF onCloseClick={()=>{setSelected(null)}} position={{lat: data.lat, lng: data.lng}}>
       <div><FaBusAlt /><h5>Bus Number: {data.label_id}  <br/> Bus Route: {data.route_id} </h5><ul style={{ listStyle: "none" }}><li>App ID: 0</li><li>App ID: 1</li><li>App ID: 2</li></ul></div>
