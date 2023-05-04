@@ -5,7 +5,8 @@ import AdminPortal from './pages/AdminPortal';
 import firebase from 'firebase/compat/app';
 import AuthGoogle from './components/auth/AuthGoogle';
 import {BrowserRouter,Routes,Route, useNavigate} from 'react-router-dom';
-import { Button } from '@mui/material';
+import { Button, IconButton } from '@mui/material';
+import {GrLogin} from "react-icons/gr";
 // Import the functions you need from the SDKs you need
 import serviceAccount from '../src/firebase.json';
 import Authenticated from './components/auth/Authenticated';
@@ -24,7 +25,9 @@ const firebaseConfig:any ={
     measurementId: serviceAccount.measurementId
 }
 // Initialize Firebase
-
+export function exitAccount(){
+  firebase.auth().signOut();
+}
 function App() {
   firebase.initializeApp(firebaseConfig);
   const [user, setUser] = useState<{email: string, uid: string}>({email: "", uid: ""});
@@ -42,7 +45,7 @@ function App() {
   const navigate = useNavigate(); // Define the `navigate` function
 
   const handleSignOut = () => {
-    firebase.auth().signOut();
+    exitAccount();
     setUser({email: null || "", uid: null ||""});
     navigate(-1);
     console.log(user); // add this line
@@ -50,9 +53,6 @@ function App() {
   
   return (
     <div className="App">
-      {user.email ? (<div>
-        <Button variant="contained" onClick={handleSignOut}>Sign Out</Button>
-      </div>) : (<div></div>)}
         <Routes>
           {user.email ? (
             <Route path="/adminportal" element={<AdminPortal/>} />

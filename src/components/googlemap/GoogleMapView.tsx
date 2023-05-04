@@ -1,7 +1,7 @@
 import { DirectionsService, DirectionsRenderer, GoogleMap, Marker, useLoadScript, LoadScript, Circle, InfoWindow, MarkerF, InfoWindowF, useGoogleMap } from '@react-google-maps/api';
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { FaBusAlt, FaUserAstronaut } from 'react-icons/fa';
-import { customIcons } from '../../assets/images/Images'
+import { customIcons } from '../../components/Icons';
 
 //test Type
 import { arrayTestData, testData } from '../../services/test';
@@ -25,7 +25,7 @@ export let mapInstnace:any = null;
  * @param this default constructor creates the bus object and data, it must be implemented in google map. 
  * @returns 
  */
-const CreateBusObject = (data:any, showBus: boolean): any => {
+const CreateBusObject = (data:any, showBus: boolean, url:string): any => {
   const [animation, setAnimation] = useState(false);
   const [icon,setIcon] = useState(customIcons.busOnline);
   useEffect(() => {
@@ -68,7 +68,8 @@ const CreateBusObject = (data:any, showBus: boolean): any => {
   const handleBusClose = (): void => {
     setIsBusWindow(false);
   }
-  return  <React.Fragment>{(mapInstnace !== null) && <MarkerF animation={google.maps.Animation.BOUNCE} onLoad={onLoad} onUnmount={onUnmount} visible={showBus} icon={CheckBusImageStatus(true,true)} position={{lat: data.lat, lng: data.lng}}
+  return  <React.Fragment>{(mapInstnace !== null) && <MarkerF animation={undefined} onLoad={onLoad} onUnmount={onUnmount} visible={showBus} 
+  icon={{url: url, size : new google.maps.Size(35,35)}} position={{lat: data.lat, lng: data.lng}}
     onClick={handleBusClick}>
     {isBusWindow && <InfoWindowF onCloseClick={handleBusClose} position={{lat: data.lat, lng: data.lng}}>
       <div><FaBusAlt /><h5>Bus Number: TEST  <br/> Bus Route: TEST </h5><ul style={{ listStyle: "none" }}><li>App ID: 0</li><li>App ID: 1</li><li>App ID: 2</li></ul></div>
@@ -128,7 +129,7 @@ const Map = (displayText: boolean, displayIcons: boolean, displayBusIcons: boole
   const [busData,setBusData] = useState<busDataType>({route_id: "", label_id :"", speed: 0,lat: 0,lng: 0,isWindow: false});
   const [busDataSets,setBusDataSets]  = useState<busDataType[]>([]);
   const [tempBusDataSets,setTempBusDataSets]  = useState<any[]>([]);
-  const [markerPosition, setMarkerPosition] = useState({ lat: -36.848461, lng: 174.763336 });
+  const [markerPosition, setMarkerPosition] = useState({ lat: -36.8672014, lng:174.759981 });
   //test Center;
   // calling test case
   useEffect(() => {
@@ -216,7 +217,8 @@ const Map = (displayText: boolean, displayIcons: boolean, displayBusIcons: boole
   useEffect(() => {
     const intervalId = setInterval(async () => {
       try {
-        const positionData: any = {lat: markerPosition.lat - 0.0001, lng: markerPosition.lng - 0.0001}
+        // moving forward
+        const positionData: any = {lat: markerPosition.lat, lng: markerPosition.lng}
         setMarkerPosition(positionData);
       }
       catch (error) {
@@ -291,9 +293,10 @@ const Map = (displayText: boolean, displayIcons: boolean, displayBusIcons: boole
     options={options}
   >
     {/* Animation Test */}
-{CreateBusObject(markerPosition,displayBusIcons)};
+{CreateBusObject(markerPosition,displayBusIcons, customIcons.userClient.icon)};
+
    <React.Fragment>
-  {(tempBusDataSets !== null) && tempBusDataSets.map((data:any)=> {return <MarkerF animation={google.maps.Animation.DROP} key={data.label_id} visible={displayBusIcons} icon={CheckBusImageStatus(true, false)} position={{lat: data.lat, lng: data.lng}}
+  {(tempBusDataSets !== null) && tempBusDataSets.map((data:any)=> {return <MarkerF animation={undefined} key={data.label_id} visible={displayBusIcons} icon={{url: customIcons.busOnline.icon,size: new google.maps.Size(45,45) }} position={{lat: data.lat, lng: data.lng}}
     onClick={() =>{onSelect(data.label_id)}}>
     { (selected === data.label_id) ?  <InfoWindowF onCloseClick={()=>{setSelected(null)}} position={{lat: data.lat, lng: data.lng}}>
       <div><FaBusAlt /><h5>Bus Number: {data.label_id}  <br/> Bus Route: {data.route_id} </h5><ul style={{ listStyle: "none" }}><li>App ID: 0</li><li>App ID: 1</li><li>App ID: 2</li></ul></div>
