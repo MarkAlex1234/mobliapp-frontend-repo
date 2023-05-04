@@ -5,6 +5,7 @@ import AdminPortal from './pages/AdminPortal';
 import firebase from 'firebase/compat/app';
 import AuthGoogle from './components/auth/AuthGoogle';
 import {BrowserRouter,Routes,Route, useNavigate} from 'react-router-dom';
+import { Button } from '@mui/material';
 // Import the functions you need from the SDKs you need
 import serviceAccount from '../src/firebase.json';
 import Authenticated from './components/auth/Authenticated';
@@ -50,7 +51,7 @@ function App() {
   return (
     <div className="App">
       {user.email ? (<div>
-        <button onClick={handleSignOut}>Sign Out</button>
+        <Button variant="contained" onClick={handleSignOut}>Sign Out</Button>
       </div>) : (<div></div>)}
         <Routes>
           {user.email ? (
