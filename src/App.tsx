@@ -30,7 +30,7 @@ function App() {
   const [user, setUser] = useState<{email: string, uid: string}>({email: "", uid: ""});
 
   useEffect(()=>{
-    firebase.auth().onAuthStateChanged((User:any)=>{
+    firebase.auth().onAuthStateChanged((User:firebase.User | null)=>{
       console.log(User);
       if(User && User.email){
         setUser({email: User.email || "", uid: User.uid || ""});

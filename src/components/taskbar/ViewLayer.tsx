@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {slide as Menu} from 'react-burger-menu';
 import  {BsFillLayersFill} from 'react-icons/bs';
-import ViewLayerStyles from '../../assets/stylesheet/ViewLayerStyles';
+import ViewLayerStyles from '../../assets/css/ViewLayerStyles';
 import { CustomToggleButton } from './SettingsBar';
 
 const ViewLayer = () =>{
