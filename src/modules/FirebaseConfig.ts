@@ -1,4 +1,4 @@
-import Firebase from "../types/firebase_types";
+import Firebase from "../types/FirebaseTypes";
 import serviceAccount from "../services/auth/firebase.json";
 export default function getFirebaseConfig(){
     const firebaseConfig:Firebase ={
