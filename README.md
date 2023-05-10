@@ -1,6 +1,6 @@
 [COMP703 R&D Development]
-Dependencies used
--Material UI
--react-google-maps/api
--react-router-dom
--MaterialUI-icon
+Dependencies used </br>
+-Material UI </br>
+-react-google-maps/api </br>
+-react-router-dom </br>
+-MaterialUI-icon </br>
