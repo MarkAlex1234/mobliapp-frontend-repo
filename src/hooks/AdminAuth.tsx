@@ -26,14 +26,14 @@ export default function AdminAuth(){
             }else{
                 setLogin(user !== null);
             }
-        })
+        });
       
     },[login,user,auth])
     return (<div className="App">
         <Routes>
             <Route path="/" element={<Navigate to="/login" />} />
             {/* pass the method inside here. */}
-            {login ? <Route path= "/admin-portal" element={<Button onClick={signOut}>HEllo</Button>}/>:
+            {login ? <Route path= "/admin-portal" element={<AdminPortal onClick={signOut}/>}/>:
             <Route path="/login" element={<SignIn/>}/> }
         </Routes>
     </div>);
