@@ -8,7 +8,7 @@ import AdminPortal from "../pages/AdminPortal";
 import {Button} from "@mui/material";
 
 export default function AdminAuth(){
-    
+    document.title = "admin login";
     const app:firebase.app.App = firebase.initializeApp(getFirebaseConfig());
     const auth:Auth = getAuth(app);
     const user:firebase.User | null = firebase.auth().currentUser;
@@ -21,9 +21,11 @@ export default function AdminAuth(){
 
     useEffect(()=> {
         auth.onAuthStateChanged((user:User | null)=> {
+            //if the user is currently active
             if(user !== null){
                 setLogin(user !== null);
             }else{
+                //if the user is not currently active
                 setLogin(user !== null);
             }
         });
@@ -33,8 +35,8 @@ export default function AdminAuth(){
         <Routes>
             <Route path="/" element={<Navigate to="/login" />} />
             {/* pass the method inside here. */}
-            {login ? <Route path= "/admin-portal" element={<AdminPortal onClick={signOut}/>}/>:
-            <Route path="/login" element={<SignIn/>}/> }
+            <Route path="/login" element={<SignIn/>}/>
+            {login ? <Route path= "/admin-portal" element={<AdminPortal onClick={signOut}/>}/>: <></> }
         </Routes>
     </div>);
 }
