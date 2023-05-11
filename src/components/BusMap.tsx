@@ -1,16 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { LoadScript,GoogleMap, MarkerF } from '@react-google-maps/api';
+import { LoadScript,GoogleMap, MarkerF, InfoWindowF } from '@react-google-maps/api';
 import GoogleMapPrefsTypes from '../types/GoogleMapPrefTypes';
 import { Global } from '../global/Region';
 import { getTestAPI } from '../services/api/OfflineAPI';
 import { test2 } from '../__TEST__/test2';
 import { customIcons } from '../modules/Icons';
 import { getAllActiveBuses } from '../services/api/BusAPI';
-
+import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
 
 export let busMapInstance:any =  null || undefined;
 const BusMap = (props:any):JSX.Element => {
   const googleMapAPI:string = process.env.REACT_APP_GOOGLE_MAPS_API || "";
+  const [infoWindow, setInfoWindow] = useState<null | number>(null);
   const [currentMapPos,setCurrentMapPos] = useState(Global.auckland);
   const busMapRef = useRef(undefined || null);
   //Bus Datas
@@ -74,6 +75,10 @@ const BusMap = (props:any):JSX.Element => {
     onUnmount: onUnmount,
     mapContainerStyle: {width:"100%",height:"100%",position:"fixed", zIndex: -2},
     options: options
+  }
+
+  function onInfoWindow(item:any){
+    setInfoWindow(item);
   }
 
   function onLoad(map: any){
@@ -154,13 +159,19 @@ const BusMap = (props:any):JSX.Element => {
       <LoadScript googleMapsApiKey={googleMapAPI}>
         <div style={googleMapPref.mapContainerStyle}>
       <GoogleMap zoom={googleMapPref.zoom} center={googleMapPref.center} onLoad={googleMapPref.onLoad} onUnmount={googleMapPref.onUnmount} mapContainerStyle={googleMapPref.mapContainerStyle} options={googleMapPref.options}>
-      <MarkerF position={Global.auckland}/>
+      <React.Fragment>
+           <MarkerF  position={Global.auckland}/>
+      </React.Fragment>
       <React.Fragment>
         {(sortedBusData !== null) && sortedBusData.map((data:any,index:number) => {
           // console.log(data.lat, data.lng);
           if(index <= busDisplayLimits){
           return <React.Fragment key={index}>
-            <MarkerF key={index} icon={{url: customIcons.busOnline.icon,size: new google.maps.Size(45,45) }} visible={props.isBusHide} position={{lat: data.lat, lng: data.lng}}/>
+            <MarkerF onClick={()=>{onInfoWindow(data.bus_id)}} key={index} icon={{url: customIcons.busOnline.icon,size: new google.maps.Size(45,45) }} visible={props.isBusHide} position={{lat: data.lat, lng: data.lng}}>
+                  {(infoWindow === data.bus_id) ? <InfoWindowF onCloseClick={()=>{onInfoWindow(null)}} position={{lat: data.lat, lng: data.lng}}>
+                  <div><DirectionsBusIcon/><h5>Bus Speed: {data.speed_id}  <br/> Bus ID: {data.bus_id} </h5><ul style={{ listStyle: "none" }}><li>App ID: ???</li><li>App ID: ???</li><li>App ID: ???</li></ul></div>
+                  </InfoWindowF> : null}
+              </MarkerF>
           </React.Fragment>
           }
         })}
