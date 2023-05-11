@@ -8,6 +8,7 @@ import BusDataType from '../types/BusDataTypes';
 import { DirectionsBus } from '@mui/icons-material';
 import { arrayTestData } from '../__TEST__/test';
 import { getTestAPI } from '../services/api/OfflineAPI';
+import { test2 } from '../__TEST__/test2';
 
 
 
@@ -41,8 +42,8 @@ const SearchBar = ():any =>{
   useEffect(() => {
     const intervalId = setInterval(() => {
       //change this api. when u calling differnt datasets
-      getTestAPI(arrayTestData).then((data: any) => {
-        setBusDataSets([...data]);
+      getTestAPI(test2).then((data: any) => {
+        setBusDataSets([...data.data]);
       });
       console.log("Refreshing  data sets");
       busDataSets.forEach((data: any) => {
