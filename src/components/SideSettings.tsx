@@ -25,6 +25,8 @@ export default function SideSettings(props:any) {
   const [hideLabelTexts,setHideLabelTexts] = React.useState(true);
   const [hidewBusIcons,setHideBusIcons] = React.useState(true);
   const [hideTools, setHideTools] = React.useState(true);
+  const [offlineAPI, setOfflineAPI] = React.useState(false);
+  const [backendAPI, setBackendAPI] = React.useState(false);
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -63,6 +65,8 @@ export default function SideSettings(props:any) {
         <ListItem key={"hT"} sx={{fontSize:12}}><div>Hide All Label Texts</div> <ToggleButton  sx={{width: 20, height:20}}   value="check" selected={hideLabelTexts} onChange={()=>{setHideLabelTexts(!hideLabelTexts)}}><CheckIcon sx={{width:17,height:17}}/></ToggleButton></ListItem>
         <ListItem key={"hB"} sx={{fontSize:12}}><div>Hide All Bus Icons</div> <ToggleButton sx={{width: 20, height:20}}    value="check" selected={hidewBusIcons} onChange={()=>{setHideBusIcons(!hidewBusIcons)}}><CheckIcon sx={{width:17,height:17}}/></ToggleButton></ListItem>
         <ListItem key={"hUIT"}sx={{fontSize:12}}><div>Hide UI Tools</div> <ToggleButton sx={{width: 20, height:20}}  value="check" selected={hideTools} onChange={()=>{setHideTools(!hideTools)}}><CheckIcon sx={{width:17,height:17}}/></ToggleButton></ListItem>
+        <ListItem key={"Offline"}sx={{fontSize:12}}><div>Initiate offline API call</div> <ToggleButton sx={{width: 20, height:20}}  value="check" selected={offlineAPI} onChange={()=>{setOfflineAPI(!offlineAPI)}}><CheckIcon sx={{width:17,height:17}}/></ToggleButton></ListItem>
+        <ListItem key={"Backend"}sx={{fontSize:12}}><div>Initiate backend API call</div> <ToggleButton sx={{width: 20, height:20}}  value="check" selected={backendAPI} onChange={()=>{setBackendAPI(!backendAPI)}}><CheckIcon sx={{width:17,height:17}}/></ToggleButton></ListItem>
       </List>
     </Box>
   );
@@ -83,7 +87,8 @@ export default function SideSettings(props:any) {
         </React.Fragment>
         
     </div>
-    <BusMap isLabelIcon={hideLabelIcons} isBusHide={hidewBusIcons} isLabelText={hideLabelTexts} isDefaultUI={hideTools} />
+    <BusMap isLabelIcon={hideLabelIcons} isBusHide={hidewBusIcons}
+     isLabelText={hideLabelTexts} isDefaultUI={hideTools} isOfflineAPI={offlineAPI} isBackendAPI={backendAPI}/>
     </div>
   );
 }

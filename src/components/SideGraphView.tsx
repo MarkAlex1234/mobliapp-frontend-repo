@@ -9,6 +9,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import BarChartIcon from '@mui/icons-material/BarChart';
+import { Api } from '@mui/icons-material';
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
 export default function SideGraphView(props:any) {
@@ -40,12 +41,13 @@ export default function SideGraphView(props:any) {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <div>Yeah</div>
+      <div>Developing</div>
     </Box>
   );
   return (
     <div style={{position:"fixed",right: "10%"}}>
         <React.Fragment key={"right"}>
+          <Button><Api color='disabled'/></Button>
           <Button onClick={toggleDrawer("right", true)}><BarChartIcon/></Button>
           <Drawer
             anchor={"right"}

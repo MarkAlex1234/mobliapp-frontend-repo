@@ -40,25 +40,25 @@ const SearchBar = ():any =>{
 //  instance.panTo({lat: 30,lng: 30});
   useEffect(() => {
     const intervalId = setInterval(() => {
-   
+      //change this api. when u calling differnt datasets
       getTestAPI(arrayTestData).then((data: any) => {
         setBusDataSets([...data]);
       });
       console.log("Refreshing  data sets");
       busDataSets.forEach((data: any) => {
-        const route_id = data.response.entity[0].vehicle.trip.route_id;
-        const label_id = data.response.entity[0].vehicle.vehicle.label;
-        const speed_id = data.response.entity[0].vehicle.position.speed;
-        const lat = data.response.entity[0].vehicle.position.latitude;
-        const lng = data.response.entity[0].vehicle.position.longitude;
-        const isWindow = false;
+        const route_id = data.id;
+        const label_id = data.vehicle.vehicle.label;
+        const speed_id = data.vehicle.position.speed;
+        const lat = data.vehicle.position.latitude;
+        const lng = data.vehicle.position.longitude;
+       
         const busTempData = {
           route_id: route_id,
           label_id: label_id,
           speed: speed_id,
           lat: lat,
           lng: lng,
-          isWindow: isWindow,
+       
         };
         setTempBusDataSets((prevData) => {
           const index = prevData.findIndex(
