@@ -1,4 +1,5 @@
-export async function testData(data:any[]) {
+//Getting the test api call.
+export async function getTestAPI(data:any[]) {
     const tempData:any[] = data;
     try {
       // const tempData = data;

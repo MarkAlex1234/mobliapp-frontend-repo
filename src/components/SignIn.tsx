@@ -3,6 +3,7 @@ import { getAuth } from "firebase/auth";
 import firebase from "firebase/compat/app";
 import * as firebaseui from "firebaseui";
 import "firebaseui/dist/firebaseui.css";
+import { Images } from "../modules/Logo";
 
 
 const SignIn: React.FC = () => {
@@ -26,7 +27,10 @@ const SignIn: React.FC = () => {
   }, [uiRef]);
 
   return (
+    <div>
+      <img src={Images.Mobli.url} style={{width:"50px", height:"50px"}}/>
       <div style={{marginTop: "10%"}} id="firebaseui-auth-container"></div>
+      </div>
   );
 };
 

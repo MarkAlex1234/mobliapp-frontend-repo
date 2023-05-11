@@ -7,7 +7,7 @@ import { busMapInstance } from './BusMap';
 import BusDataType from '../types/BusDataTypes';
 import { DirectionsBus } from '@mui/icons-material';
 import { arrayTestData } from '../__TEST__/test';
-import { testData } from '../services/api/OfflineAPI';
+import { getTestAPI } from '../services/api/OfflineAPI';
 
 
 
@@ -40,10 +40,11 @@ const SearchBar = ():any =>{
 //  instance.panTo({lat: 30,lng: 30});
   useEffect(() => {
     const intervalId = setInterval(() => {
-      console.log("test");
-      testData(arrayTestData).then((data: any) => {
+   
+      getTestAPI(arrayTestData).then((data: any) => {
         setBusDataSets([...data]);
       });
+      console.log("Refreshing  data sets");
       busDataSets.forEach((data: any) => {
         const route_id = data.response.entity[0].vehicle.trip.route_id;
         const label_id = data.response.entity[0].vehicle.vehicle.label;

@@ -23,7 +23,7 @@ export default function SideSettings(props:any) {
   //my preference settings
   const [hideLabelIcons,setHideLabelIcons] = React.useState(true);
   const [hideLabelTexts,setHideLabelTexts] = React.useState(true);
-  const [hidewBusIcons,setHideBusIcons] = React.useState(false);
+  const [hidewBusIcons,setHideBusIcons] = React.useState(true);
   const [hideTools, setHideTools] = React.useState(true);
   const [state, setState] = React.useState({
     top: false,
@@ -83,7 +83,7 @@ export default function SideSettings(props:any) {
         </React.Fragment>
         
     </div>
-    <BusMap isLabelIcon={hideLabelIcons} isLabelText={hideLabelTexts} isDefaultUI={hideTools} />
+    <BusMap isLabelIcon={hideLabelIcons} isBusHide={hidewBusIcons} isLabelText={hideLabelTexts} isDefaultUI={hideTools} />
     </div>
   );
 }
