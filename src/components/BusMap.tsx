@@ -3,21 +3,22 @@ import { LoadScript,GoogleMap } from '@react-google-maps/api';
 import GoogleMapPrefsTypes from '../types/GoogleMapPrefTypes';
 import { Global } from '../global/Region';
 
+
 export let busMapInstance:any =  null || undefined;
-export var hideTools:boolean = true;
-const BusMap = ():JSX.Element => {
+const BusMap = (props:any):JSX.Element => {
   const googleMapAPI:string = process.env.REACT_APP_GOOGLE_MAPS_API || "";
   const [currentMapPos,setCurrentMapPos] = useState(Global.auckland);
   const busMapRef = useRef(undefined || null);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const options = {
-    disableDefaultUI: hideTools,
+    disableDefaultUI: props.isDefaultUI,
     styles: [{
       featureType: "all",
       elementType: "labels.text",
       stylers: [
         {
-          visibility : "on"}
+          visibility : props.isLabelText ? "off" : "on" }
         
       ]
     },
@@ -26,7 +27,7 @@ const BusMap = ():JSX.Element => {
       elementType: "labels.icon",
       stylers: [
         {
-          visibility:  "off"
+          visibility:  props.isLabelIcon ? "off" : "on"
         } 
       ]
     },
@@ -61,7 +62,7 @@ const BusMap = ():JSX.Element => {
     center: currentMapPos,
     onLoad: onLoad,
     onUnmount: onUnmount,
-    mapContainerStyle: {width:"100%",height:"100%",position:"fixed"},
+    mapContainerStyle: {width:"100%",height:"100%",position:"fixed", zIndex: -2},
     options: options
   }
 
@@ -73,12 +74,7 @@ const BusMap = ():JSX.Element => {
   function onUnmount():void{
     busMapRef.current = null;
   }
-  useEffect(()=>{
-   if(hideTools){
-      console.log("?");
-   } else{
-   }
-  },[options])
+
   return (
     <React.Fragment>
       <LoadScript googleMapsApiKey={googleMapAPI}>

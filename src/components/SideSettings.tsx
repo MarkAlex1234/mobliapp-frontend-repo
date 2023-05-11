@@ -13,21 +13,25 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CheckIcon from "@mui/icons-material/Check";
 import { ToggleButton } from '@mui/material';
 import { Global } from '../global/Region';
-import { busMapInstance } from './BusMap';
+import BusMap from './BusMap';
+import SearchBar from './SearchBar';
+
+
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
 export default function SideSettings(props:any) {
   //my preference settings
-  const [hideLabelIcons,setHideLabelIcons] = React.useState(false);
-  const [hideLabelTexts,setHideLabelTexts] = React.useState(false);
+  const [hideLabelIcons,setHideLabelIcons] = React.useState(true);
+  const [hideLabelTexts,setHideLabelTexts] = React.useState(true);
   const [hidewBusIcons,setHideBusIcons] = React.useState(false);
-  const [hideTools, setHideTools] = React.useState(false);
+  const [hideTools, setHideTools] = React.useState(true);
   const [state, setState] = React.useState({
     top: false,
     left: false,
     bottom: false,
     right: false,
   });
+
 
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
@@ -44,11 +48,7 @@ export default function SideSettings(props:any) {
     };
     React.useEffect(()=>{
       if(hideLabelIcons){
- 
-        console.log("true");
-      }else{
-
-        console.log("false");
+  
       }
     },[hideLabelIcons])
   const list = (anchor: Anchor) => (
@@ -59,17 +59,19 @@ export default function SideSettings(props:any) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <ListItem>Hide All Label Icons <ToggleButton size="small" value="check" selected={hideLabelIcons} onChange={()=>{setHideLabelIcons(!hideLabelIcons)}}><CheckIcon/></ToggleButton></ListItem>
-        <ListItem>Hide All Label Texts <ToggleButton size="small"  value="check" selected={hideLabelTexts} onChange={()=>{setHideLabelTexts(!hideLabelTexts)}}><CheckIcon/></ToggleButton></ListItem>
-        <ListItem>Hide All Bus Icons <ToggleButton  size="small" value="check" selected={hidewBusIcons} onChange={()=>{setHideBusIcons(!hidewBusIcons)}}><CheckIcon/></ToggleButton></ListItem>
-        <ListItem>Hide UI Tools <ToggleButton  size="small"  value="check" selected={hideTools} onChange={()=>{setHideTools(!hideTools)}}><CheckIcon/></ToggleButton></ListItem>
+        <ListItem sx={{fontSize:12}}><div>Hide All Label Icons</div> <ToggleButton sx={{width: 20, height:20}} value="check" selected={hideLabelIcons} onChange={()=>{setHideLabelIcons(!hideLabelIcons)}}><CheckIcon sx={{width:17,height:17}}/></ToggleButton></ListItem>
+        <ListItem sx={{fontSize:12}}><div>Hide All Label Texts</div> <ToggleButton  sx={{width: 20, height:20}}   value="check" selected={hideLabelTexts} onChange={()=>{setHideLabelTexts(!hideLabelTexts)}}><CheckIcon sx={{width:17,height:17}}/></ToggleButton></ListItem>
+        <ListItem sx={{fontSize:12}}><div>Hide All Bus Icons</div> <ToggleButton sx={{width: 20, height:20}}    value="check" selected={hidewBusIcons} onChange={()=>{setHideBusIcons(!hidewBusIcons)}}><CheckIcon sx={{width:17,height:17}}/></ToggleButton></ListItem>
+        <ListItem sx={{fontSize:12}}><div>Hide UI Tools</div> <ToggleButton sx={{width: 20, height:20}}  value="check" selected={hideTools} onChange={()=>{setHideTools(!hideTools)}}><CheckIcon sx={{width:17,height:17}}/></ToggleButton></ListItem>
       </List>
     </Box>
   );
   return (
-    <div style={{position:"fixed",left:"10%"}}>
+    <div style= {{zIndex:1}}>
+    <div style={{position:"fixed",left:"10%", zIndex: 1, float:'left'}}>
         <React.Fragment key={"left"}>
           <Button onClick={toggleDrawer("left", true)}><MenuIcon/></Button>
+          <SearchBar/>
           <Button onClick={props.onClick}><LogoutIcon/></Button>
           <Drawer
             anchor={"left"}
@@ -80,6 +82,8 @@ export default function SideSettings(props:any) {
           </Drawer>
         </React.Fragment>
         
+    </div>
+    <BusMap isLabelIcon={hideLabelIcons} isLabelText={hideLabelTexts} isDefaultUI={hideTools} />
     </div>
   );
 }
