@@ -21,7 +21,7 @@ const sleep = (delay:number = 0) =>
 
 const SearchBar = ():any =>{
 
-  
+  const waitForSearch:number = 3;
    //trying to get backend data. the DTO data transfer
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState<readonly any[]>([]);
@@ -40,8 +40,7 @@ const SearchBar = ():any =>{
 //  instance.panTo({lat: 30,lng: 30});
   useEffect(() => {
     const intervalId = setInterval(() => {
-
-    //  console.log(mapInstnace);
+      console.log("test");
       testData(arrayTestData).then((data: any) => {
         setBusDataSets([...data]);
       });
@@ -72,7 +71,7 @@ const SearchBar = ():any =>{
           }
         });
       });
-    }, 15000);
+    }, (3 * 1000));
     return () => clearInterval(intervalId);
   }, [busDataSets]);
   
@@ -118,13 +117,21 @@ const SearchBar = ():any =>{
       isOptionEqualToValue={(option, value) => option.label_id === value.label_id}
       getOptionLabel={(option) => (option.label_id )}
       renderOption ={(props,options) =>(
-        <Box component="li" sx={{fontSize: "10px",textAlign:"left"}} {...props}><DirectionsBus style={{margin: 2, flexShrink: 0}}/> Bus Number: {options.label_id}
+        (options !== null && props !== null && options.id !== 0) ? 
+        <React.Fragment key={options.id}>
+        <Box component="li" sx={{fontSize: "10px",textAlign:"left"}} {...props}>
+        <DirectionsBus style={{margin: 2, flexShrink: 0}}/> 
+        Bus Number: {options.label_id}
         <br/> BusRoutes: {options.route_id}
         <br/> BusStatus: ONLINE</Box>
+        </React.Fragment>
+        : <></>
     )}
       options={options}
       loading={loading}
-      onChange={(event:any,value:any) =>{ updateMapCenter(event,value)}}
+      onChange={(event:any,value:any) =>{ 
+        if(event !== null && value !== null){
+          updateMapCenter(event,value)}}}
       renderInput={(params) => (
         <TextField
           {...params}
@@ -135,7 +142,7 @@ const SearchBar = ():any =>{
             endAdornment: (
               <React.Fragment>
                 {loading ? <CircularProgress color="inherit" size={10} /> : null}
-                {params.InputProps.endAdornment}
+                {params.InputProps.endAdornment} 
               </React.Fragment>
             ),
           }}

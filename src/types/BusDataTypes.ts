@@ -1,9 +1,9 @@
 //Bus types for at API
 type BusDataType = {
-    speed:number,
-    label_id: string,
-    route_id:string,
-    lat:number,
-    lng:number,
+    speed:any,
+    label_id: any,
+    route_id:any,
+    lat:any,
+    lng:any,
 }
 export default BusDataType;

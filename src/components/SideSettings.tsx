@@ -59,10 +59,10 @@ export default function SideSettings(props:any) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <ListItem sx={{fontSize:12}}><div>Hide All Label Icons</div> <ToggleButton sx={{width: 20, height:20}} value="check" selected={hideLabelIcons} onChange={()=>{setHideLabelIcons(!hideLabelIcons)}}><CheckIcon sx={{width:17,height:17}}/></ToggleButton></ListItem>
-        <ListItem sx={{fontSize:12}}><div>Hide All Label Texts</div> <ToggleButton  sx={{width: 20, height:20}}   value="check" selected={hideLabelTexts} onChange={()=>{setHideLabelTexts(!hideLabelTexts)}}><CheckIcon sx={{width:17,height:17}}/></ToggleButton></ListItem>
-        <ListItem sx={{fontSize:12}}><div>Hide All Bus Icons</div> <ToggleButton sx={{width: 20, height:20}}    value="check" selected={hidewBusIcons} onChange={()=>{setHideBusIcons(!hidewBusIcons)}}><CheckIcon sx={{width:17,height:17}}/></ToggleButton></ListItem>
-        <ListItem sx={{fontSize:12}}><div>Hide UI Tools</div> <ToggleButton sx={{width: 20, height:20}}  value="check" selected={hideTools} onChange={()=>{setHideTools(!hideTools)}}><CheckIcon sx={{width:17,height:17}}/></ToggleButton></ListItem>
+        <ListItem key={"hL"} sx={{fontSize:12}}><div>Hide All Label Icons</div> <ToggleButton sx={{width: 20, height:20}} value="check" selected={hideLabelIcons} onChange={()=>{setHideLabelIcons(!hideLabelIcons)}}><CheckIcon sx={{width:17,height:17}}/></ToggleButton></ListItem>
+        <ListItem key={"hT"} sx={{fontSize:12}}><div>Hide All Label Texts</div> <ToggleButton  sx={{width: 20, height:20}}   value="check" selected={hideLabelTexts} onChange={()=>{setHideLabelTexts(!hideLabelTexts)}}><CheckIcon sx={{width:17,height:17}}/></ToggleButton></ListItem>
+        <ListItem key={"hB"} sx={{fontSize:12}}><div>Hide All Bus Icons</div> <ToggleButton sx={{width: 20, height:20}}    value="check" selected={hidewBusIcons} onChange={()=>{setHideBusIcons(!hidewBusIcons)}}><CheckIcon sx={{width:17,height:17}}/></ToggleButton></ListItem>
+        <ListItem key={"hUIT"}sx={{fontSize:12}}><div>Hide UI Tools</div> <ToggleButton sx={{width: 20, height:20}}  value="check" selected={hideTools} onChange={()=>{setHideTools(!hideTools)}}><CheckIcon sx={{width:17,height:17}}/></ToggleButton></ListItem>
       </List>
     </Box>
   );
