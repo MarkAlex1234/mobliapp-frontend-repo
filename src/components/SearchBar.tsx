@@ -60,7 +60,7 @@ const SearchBar = (props: any): any => {
       }
 
       if (props.isNearest) {
-        getUserNearetBuses().then((data: any) => {
+        getUserNearetBuses("123").then((data: any) => {
           console.log(data.data);
           setBusDataSets([...data.data]);
         });

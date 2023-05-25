@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { LoadScript, GoogleMap, MarkerF, InfoWindowF } from '@react-google-maps/api';
+import { LoadScript, GoogleMap, MarkerF, InfoWindowF, CircleF } from '@react-google-maps/api';
 import GoogleMapPrefsTypes from '../types/GoogleMapPrefTypes';
 import { Global } from '../global/Region';
 import { getTestAPI } from '../services/api/OfflineAPI';
 import { test2 } from '../__TEST__/test2';
 import { customIcons } from '../modules/Icons';
-import { getAllActiveBuses, getUserNearetBuses } from '../services/api/BusAPI';
+import { getAllActiveBuses, getUserNearetBuses, postUser } from '../services/api/BusAPI';
 import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
-import { waitFor } from '@testing-library/react';
+import { user, user1, user2 } from '../__TEST__/users';
 
 export let busMapInstance: any = null || undefined;
 const BusMap = (props: any): JSX.Element => {
@@ -95,7 +95,6 @@ const BusMap = (props: any): JSX.Element => {
   }
 
 
-
   useEffect(() => {
     const intervalId = setInterval(() => {
       //get the test data
@@ -120,10 +119,18 @@ const BusMap = (props: any): JSX.Element => {
       }
 
       if (props.isNearest) {
-        getUserNearetBuses().then((data: any) => {
+        getUserNearetBuses(user.userId).then((data: any) => {
           console.log(data.data);
           setBusData([...data.data]);
         });
+        // getUserNearetBuses(user1.userId).then((data: any) => {
+        //   console.log(data.data);
+        //   setBusData([...data.data]);
+        // });
+        // getUserNearetBuses(user2.userId).then((data: any) => {
+        //   console.log(data.data);
+        //   setBusData([...data.data]);
+        // });
       }
 
 
@@ -196,8 +203,10 @@ const BusMap = (props: any): JSX.Element => {
         <div style={googleMapPref.mapContainerStyle}>
           <GoogleMap zoom={googleMapPref.zoom} center={googleMapPref.center} onLoad={googleMapPref.onLoad} onUnmount={googleMapPref.onUnmount} mapContainerStyle={googleMapPref.mapContainerStyle} options={googleMapPref.options}>
             <React.Fragment>
-              <MarkerF icon={{ url: customIcons.userClient.icon, scaledSize: { width: 30, height: 30 } as google.maps.Size }} position={{ lat: -36.8560547, lng: 174.7619646 }} />
+              <MarkerF icon={{ url: customIcons.userClient.icon, scaledSize: { width: 30, height: 30 } as google.maps.Size }} position={{ lat: user.userLocation[0], lng: user.userLocation[1] }} />
+              <CircleF radius={750} center={{ lat: user.userLocation[0], lng: user.userLocation[1] }} />
             </React.Fragment>
+
             <React.Fragment>
               {(sortedBusData !== null) && sortedBusData.map((data: any, index: number) => {
                 //  console.log(data.lat, data.lng);

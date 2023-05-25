@@ -29,7 +29,7 @@ export default function SideSettings(props: any) {
   const [offlineAPI, setOfflineAPI] = React.useState(false);
   const [backendAPI, setBackendAPI] = React.useState(false);
   const [nearestBackendAPI, setNearestBackendAPI] = React.useState(false);
-  const [busLimits100, setBusLimits100] = React.useState(false);
+  const [busLimits100, setBusLimits100] = React.useState(true);
   const [resetAPI, setResetAPI] = React.useState(false);
   const [state, setState] = React.useState({
     top: false,
