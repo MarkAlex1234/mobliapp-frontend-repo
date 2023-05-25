@@ -1,4 +1,4 @@
-export const arrayTestData = [
+export const test = [
   {
     id: "512143000",
     vehicle: {
