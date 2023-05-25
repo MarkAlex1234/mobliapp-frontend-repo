@@ -41,3 +41,24 @@ export async function getAllActiveBuses() {
     throw error;
   }
 }
+
+export async function getUserNearetBuses() {
+  try {
+    const response = await axios
+      .get("http://localhost:8000/users/user/123/nearest-buses", {
+        headers: {
+          "Access-Control-Allow-Origin": "", // allow requests from any origin
+          "Access-Control-Allow-Methods": "GET", // allow only GET requests
+          "Access-Control-Allow-Headers": "Content-Type", // allow requests with Content-Type header
+        },
+      })
+      .then((data: any) => {
+        return JSON.stringify(data);
+      });
+    console.log(JSON.parse(response));
+    return JSON.parse(response);
+  } catch (error) {
+    console.error(`error: ${error}`);
+    throw error;
+  }
+}
