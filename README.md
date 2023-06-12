@@ -1,6 +1,6 @@
 # COMP703 S2 R&D Public Transport Passenger-Ride Detection
 ## Description
-Intial web application protoype that displays bus locations with realtime backend datas.
+Web application protoype that displays bus locations with realtime backend datas.
 
 ## Getting Started
 
