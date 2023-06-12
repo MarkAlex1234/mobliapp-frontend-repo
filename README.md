@@ -1,11 +1,4 @@
-[COMP703 R&D Development] </br>
-Dependencies used </br>
--Material UI </br>
--react-google-maps/api </br>
--react-router-dom </br>
--MaterialUI-icon </br>
-
-# R&D Public Transport Passenger-Ride Detection
+# COMP703 S2 R&D Public Transport Passenger-Ride Detection
 ## Description
 Intial web application protoype that displays bus locations with realtime backend datas.
 
