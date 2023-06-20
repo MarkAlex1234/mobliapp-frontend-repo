@@ -195,7 +195,7 @@ const BusMap = (props: any): JSX.Element => {
       });
     }, waitForBus * 1000);
     return () => clearInterval(intervalId);
-  }, [sortedBusData, busData, props.isOfflineAPI, props.isReset, props.isNearest, props.isBackendAPI, props.isBusLimited])
+  }, [sortedBusData, busData, props.isOfflineAPI, props.isReset, props.isNearest, props.isBackendAPI, props.isBusLimited, waitForBus])
 
   return (
     <React.Fragment>
@@ -208,6 +208,7 @@ const BusMap = (props: any): JSX.Element => {
             </React.Fragment>
 
             <React.Fragment>
+
               {(sortedBusData !== null) && sortedBusData.map((data: any, index: number) => {
                 //  console.log(data.lat, data.lng);
                 const position = { lat: parseFloat(data.lat), lng: parseFloat(data.lng) };
@@ -217,7 +218,7 @@ const BusMap = (props: any): JSX.Element => {
                   if (props.isBusLimited) {
                     return <React.Fragment key={index}>
                       <MarkerF onClick={() => { onInfoWindow(data.bus_id) }} key={index} icon={data.icon} visible={props.isBusHide} position={position} >
-                        {(infoWindow === data.bus_id) ? <InfoWindowF onCloseClick={() => { onInfoWindow(null) }} position={{ lat: data.lat, lng: data.lng }}>
+                        {(infoWindow === data.bus_id && infoWindow != null) ? <InfoWindowF onCloseClick={() => { onInfoWindow(null) }} position={{ lat: data.lat, lng: data.lng }}>
                           <div><DirectionsBusIcon /><h5>Bus Speed: {data.speed_id}  <br /> Bus ID: {data.bus_id} </h5><ul style={{ listStyle: "none" }}><li>App ID: ???</li><li>App ID: ???</li><li>App ID: ???</li></ul></div>
                         </InfoWindowF> : null}
                       </MarkerF>
@@ -225,6 +226,7 @@ const BusMap = (props: any): JSX.Element => {
                   }
                 }
               })}
+
             </React.Fragment>
           </GoogleMap>
         </div>
